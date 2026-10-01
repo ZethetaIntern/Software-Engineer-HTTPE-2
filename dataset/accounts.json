@@ -1,0 +1,102 @@
+[
+  {
+    "accountId": "ACC-0001",
+    "shardId": 3,
+    "balance": 100000.00,
+    "currency": "USD",
+    "status": "ACTIVE",
+    "accountType": "SAVINGS",
+    "tier": "PLATINUM",
+    "createdAt": "2026-09-30T12:00:00.000Z"
+  },
+  {
+    "accountId": "ACC-0002",
+    "shardId": 3,
+    "balance": 100000.00,
+    "currency": "USD",
+    "status": "ACTIVE",
+    "accountType": "CHECKING",
+    "tier": "GOLD",
+    "createdAt": "2026-09-30T12:00:00.000Z"
+  },
+  {
+    "accountId": "ACC-0003",
+    "shardId": 1,
+    "balance": 250000.00,
+    "currency": "USD",
+    "status": "ACTIVE",
+    "accountType": "MERCHANT_SETTLEMENT",
+    "tier": "ENTERPRISE",
+    "createdAt": "2026-09-30T12:00:00.000Z"
+  },
+  {
+    "accountId": "ACC-0004",
+    "shardId": 7,
+    "balance": 75000.00,
+    "currency": "USD",
+    "status": "ACTIVE",
+    "accountType": "CHECKING",
+    "tier": "SILVER",
+    "createdAt": "2026-09-30T12:00:00.000Z"
+  },
+  {
+    "accountId": "ACC-0005",
+    "shardId": 0,
+    "balance": 150000.00,
+    "currency": "USD",
+    "status": "ACTIVE",
+    "accountType": "SAVINGS",
+    "tier": "GOLD",
+    "createdAt": "2026-09-30T12:00:00.000Z"
+  },
+  {
+    "accountId": "ACC-0006",
+    "shardId": 5,
+    "balance": 50000.00,
+    "currency": "USD",
+    "status": "ACTIVE",
+    "accountType": "WALLET",
+    "tier": "STANDARD",
+    "createdAt": "2026-09-30T12:00:00.000Z"
+  },
+  {
+    "accountId": "ACC-0007",
+    "shardId": 2,
+    "balance": 800000.00,
+    "currency": "USD",
+    "status": "ACTIVE",
+    "accountType": "ESCROW",
+    "tier": "ENTERPRISE",
+    "createdAt": "2026-09-30T12:00:00.000Z"
+  },
+  {
+    "accountId": "ACC-0008",
+    "shardId": 4,
+    "balance": 120000.00,
+    "currency": "USD",
+    "status": "ACTIVE",
+    "accountType": "CHECKING",
+    "tier": "GOLD",
+    "createdAt": "2026-09-30T12:00:00.000Z"
+  },
+  {
+    "accountId": "ACC-0009",
+    "shardId": 6,
+    "balance": 90000.00,
+    "currency": "USD",
+    "status": "ACTIVE",
+    "accountType": "SAVINGS",
+    "tier": "PLATINUM",
+    "createdAt": "2026-09-30T12:00:00.000Z"
+  },
+  {
+    "accountId": "ACC-0010",
+    "shardId": 2,
+    "balance": 350000.00,
+    "currency": "USD",
+    "status": "ACTIVE",
+    "accountType": "MERCHANT_SETTLEMENT",
+    "tier": "ENTERPRISE",
+    "createdAt": "2026-09-30T12:00:00.000Z"
+  }
+]

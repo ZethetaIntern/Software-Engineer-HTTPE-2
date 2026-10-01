@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpe-engine-deployment
+  namespace: fintech-core
+  labels:
+    app: httpe-engine
+    tier: transaction-processing
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: httpe-engine
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: httpe-engine
+    spec:
+      containers:
+        - name: httpe-engine
+          image: httpe-fintech-engine:v1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"
+            - name: NUM_SHARDS
+              value: "8"
+            - name: RATE_LIMIT_MAX_TPS
+              value: "25000"
+          resources:
+            requests:
+              cpu: "1000m"
+              memory: "1024Mi"
+            limits:
+              cpu: "2000m"
+              memory: "2048Mi"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpe-service
+  namespace: fintech-core
+spec:
+  type: ClusterIP
+  selector:
+    app: httpe-engine
+  ports:
+    - port: 80
+      targetPort: 8080
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: httpe-hpa
+  namespace: fintech-core
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: httpe-engine-deployment
+  minReplicas: 4
+  maxReplicas: 16
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 65

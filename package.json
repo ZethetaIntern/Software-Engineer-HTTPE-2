@@ -1,0 +1,33 @@
+{
+  "name": "httpe-fintech-engine",
+  "version": "1.0.0",
+  "description": "High-Throughput Transaction Processing Engine (12,000+ TPS) for BFSI Payments & Distributed Ledger",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "cluster": "node src/cluster.js",
+    "benchmark": "node src/benchmarks/load-test.js",
+    "test": "node src/tests/run-tests.js"
+  },
+  "keywords": [
+    "fintech",
+    "high-throughput",
+    "tps",
+    "sharding",
+    "acid",
+    "idempotency",
+    "kafka",
+    "p2p-payments"
+  ],
+  "author": "Zetheta Intern",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "fastify": "^4.28.1",
+    "@fastify/websocket": "^8.2.0",
+    "@fastify/cors": "^9.0.1",
+    "ioredis": "^5.4.1",
+    "kafkajs": "^2.2.4",
+    "uuid": "^9.0.1"
+  }
+}

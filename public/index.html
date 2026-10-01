@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTPE Mission Control | 12,000+ TPS Fintech Processing Engine</title>
+  <meta name="description" content="High-Throughput Transaction Processing Engine (HTTPE) real-world simulation and telemetry dashboard for BFSI payments.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="dark-theme">
+  <!-- Top Glassmorphism Navigation Bar -->
+  <header class="top-nav">
+    <div class="brand">
+      <div class="logo-pulse"></div>
+      <div class="brand-text">
+        <h1>HTTPE <span class="badge-fintech">BFSI ENGINE</span></h1>
+        <p class="subtitle">Distributed High-Throughput Transaction Processing Platform</p>
+      </div>
+    </div>
+    
+    <div class="system-status-pill">
+      <span class="status-dot healthy" id="status-dot"></span>
+      <span class="status-label" id="status-label">CLUSTER ONLINE</span>
+      <span class="uptime-label" id="uptime-label">Uptime: 00:00:00</span>
+    </div>
+
+    <div class="gamified-score-card">
+      <div class="score-label">RESILIENCE GRADE</div>
+      <div class="score-value" id="resilience-grade">S+</div>
+      <div class="score-sub" id="resilience-score">Score: 100/100</div>
+    </div>
+  </header>
+
+  <!-- Main Grid Container -->
+  <main class="dashboard-grid">
+    <!-- Row 1: KPI Telemetry Cards -->
+    <section class="kpi-row">
+      <div class="kpi-card highlight-cyan">
+        <div class="kpi-header">
+          <span class="kpi-title">THROUGHPUT (TPS)</span>
+          <span class="target-chip">TARGET: 12,000+</span>
+        </div>
+        <div class="kpi-value-container">
+          <span class="kpi-number" id="kpi-tps">0</span>
+          <span class="kpi-unit">tx/sec</span>
+        </div>
+        <div class="tps-bar-wrapper">
+          <div class="tps-bar-fill" id="tps-bar-fill" style="width: 0%;"></div>
+          <div class="tps-marker" style="left: 60%;" title="12,000 Target"></div>
+        </div>
+        <div class="kpi-footer">Peak: <strong id="kpi-peak-tps">0</strong> TPS</div>
+      </div>
+
+      <div class="kpi-card highlight-purple">
+        <div class="kpi-header">
+          <span class="kpi-title">LATENCY SLO (p99)</span>
+          <span class="slo-chip" id="slo-chip">SLO &lt; 50ms</span>
+        </div>
+        <div class="kpi-value-container">
+          <span class="kpi-number" id="kpi-p99">0.0</span>
+          <span class="kpi-unit">ms</span>
+        </div>
+        <div class="latency-metrics">
+          <div class="lat-metric">p50: <span id="kpi-p50">0.0</span>ms</div>
+          <div class="lat-metric">p95: <span id="kpi-p95">0.0</span>ms</div>
+        </div>
+        <div class="kpi-footer">Zero-drift execution pipeline</div>
+      </div>
+
+      <div class="kpi-card highlight-emerald">
+        <div class="kpi-header">
+          <span class="kpi-title">BALANCE INVARIANT</span>
+          <span class="audit-chip" id="audit-chip">ACID VERIFIED</span>
+        </div>
+        <div class="kpi-value-container">
+          <span class="kpi-number" id="kpi-drift">$0.00</span>
+          <span class="kpi-unit">drift</span>
+        </div>
+        <div class="invariant-status" id="invariant-sub">∑ Debits == ∑ Credits (100% Hold)</div>
+        <div class="kpi-footer">Ledger Volume: <strong id="kpi-volume">$0</strong></div>
+      </div>
+
+      <div class="kpi-card highlight-amber">
+        <div class="kpi-header">
+          <span class="kpi-title">CIRCUIT BREAKER</span>
+          <span class="cb-chip closed" id="cb-badge">CLOSED</span>
+        </div>
+        <div class="kpi-value-container">
+          <span class="kpi-number" id="kpi-cb-trips">0</span>
+          <span class="kpi-unit">trips</span>
+        </div>
+        <div class="cb-subtext" id="cb-status-desc">Fault Isolation: Normal Operation</div>
+        <div class="kpi-footer">Kafka Outbox: <strong id="kpi-outbox-backlog">0</strong> queued</div>
+      </div>
+    </section>
+
+    <!-- Row 2: Gamified Chaos Simulation Controls -->
+    <section class="simulation-deck">
+      <div class="section-title-bar">
+        <h2>🎮 REAL-WORLD SIMULATION & CHAOS INJECTION</h2>
+        <span class="deck-subtitle">Stress-test distributed resiliency, concurrency, and fault tolerance live</span>
+      </div>
+
+      <div class="action-grid">
+        <button class="sim-btn btn-surge" id="btn-flash-sale">
+          <div class="btn-icon">⚡</div>
+          <div class="btn-text">
+            <strong>Flash Sale Rush (Surge Test)</strong>
+            <span>Inject 15,000 TPS burst across 200 accounts</span>
+          </div>
+        </button>
+
+        <button class="sim-btn btn-race" id="btn-race-test">
+          <div class="btn-icon">⚔️</div>
+          <div class="btn-text">
+            <strong>Double-Spend Exploit Attack</strong>
+            <span>Spawns 20 concurrent overdraft attempts</span>
+          </div>
+        </button>
+
+        <button class="sim-btn btn-idemp" id="btn-idemp-test">
+          <div class="btn-icon">🔁</div>
+          <div class="btn-text">
+            <strong>Webhook Replay Storm</strong>
+            <span>Test strict idempotency & cached responses</span>
+          </div>
+        </button>
+
+        <button class="sim-btn btn-failover" id="btn-partner-outage">
+          <div class="btn-icon">💥</div>
+          <div class="btn-text">
+            <strong>Upstream Bank Outage</strong>
+            <span>Trip Circuit Breaker to prevent cascade</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Quick Sliders for Latency & Throttling -->
+      <div class="sliders-row">
+        <div class="slider-control">
+          <label for="slider-latency">Network Latency Injection: <span id="label-latency">0ms</span></label>
+          <input type="range" id="slider-latency" min="0" max="300" step="25" value="0">
+        </div>
+        <div class="slider-control">
+          <label for="slider-rate">Gateway Rate Limiter Cap: <span id="label-rate">20,000 TPS</span></label>
+          <input type="range" id="slider-rate" min="5000" max="40000" step="5000" value="20000">
+        </div>
+        <div class="chaos-reset-btn">
+          <button id="btn-reset-chaos" class="btn-subtle">Reset All Chaos</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 3: Shard Distribution Grid & Live Event Stream -->
+    <section class="split-view">
+      <!-- Left: Shard Topology -->
+      <div class="panel shards-panel">
+        <div class="panel-header">
+          <h3>DISTRIBUTED SHARD TOPOLOGY (CONSISTENT HASH RING)</h3>
+          <span class="sub-counter" id="shard-count-label">8 Shards Active</span>
+        </div>
+        <div class="shard-grid" id="shard-grid">
+          <!-- Dynamically populated shards 0 to 7 -->
+        </div>
+      </div>
+
+      <!-- Right: Real-time Ledger Stream & Kafka Outbox -->
+      <div class="panel stream-panel">
+        <div class="panel-header">
+          <h3>TRANSACTION JOURNAL & KAFKA EVENT STREAM</h3>
+          <span class="live-indicator"><span class="blink">●</span> LIVE</span>
+        </div>
+        <div class="event-stream" id="event-stream">
+          <div class="empty-state">Awaiting transactions... Trigger a simulation above or run benchmark!</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 4: Gamified Badges & Engineering Certifications -->
+    <section class="achievements-section">
+      <h3>🏆 SYSTEM RESILIENCE & COMPLIANCE BADGES</h3>
+      <div class="badges-row">
+        <div class="badge-card unlocked" id="badge-tps">
+          <div class="badge-icon">🚀</div>
+          <div class="badge-info">
+            <h4>12,000+ TPS Achieved</h4>
+            <p>High-throughput capacity verified</p>
+          </div>
+        </div>
+        <div class="badge-card unlocked" id="badge-acid">
+          <div class="badge-icon">🛡️</div>
+          <div class="badge-info">
+            <h4>Double-Entry Certified</h4>
+            <p>100% balance invariant verified</p>
+          </div>
+        </div>
+        <div class="badge-card unlocked" id="badge-idemp">
+          <div class="badge-icon">🔐</div>
+          <div class="badge-info">
+            <h4>Zero Double-Spending</h4>
+            <p>Idempotent concurrency control active</p>
+          </div>
+        </div>
+        <div class="badge-card unlocked" id="badge-cb">
+          <div class="badge-icon">⚡</div>
+          <div class="badge-info">
+            <h4>Circuit Breaker Resilient</h4>
+            <p>Cascading failure self-healing</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
